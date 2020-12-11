@@ -1,12 +1,21 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 import { Button, Card, Col, Image, ListGroup, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
-import products from '../../../fakeData';
 import Rating from '../../Rating/Rating';
 
 const ProductScreen = () => {
-   const {id}  = useParams();  
-   const product = products.find((p) => p._id === id)
+   const {id}  = useParams();
+   const [product,setProduct] = useState([]);
+
+   useEffect(()=>{
+          fetch(`/api/product/${id}`)
+          .then(res => res.json())
+          .then(data => setProduct(data))
+   },[])
+   
+  //  const product = products.find((p) => p._id === id)
     
     return (
         <>
