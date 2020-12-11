@@ -2,7 +2,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import axios from 'axios';
 import Product from '../../Products/Product';
 
 const Home = () => {

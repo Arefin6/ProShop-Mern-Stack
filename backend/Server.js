@@ -1,6 +1,8 @@
-const express = require('express')
+import  express from 'express'
+import  dotEnv from 'dotenv'
+import  products from'./data/products.js'
 
-const products = require('./data/products')
+ dotEnv.config()
 
 const app = express()
 
@@ -18,4 +20,5 @@ app.get('/api/product/:id',(req,res)=>{
     res.send(product)
 })
 
-app.listen(8080,console.log('Listening buddy'));
+const Port = process.env.PORT;
+app.listen(Port||8080 ,console.log('Listening buddy'));
