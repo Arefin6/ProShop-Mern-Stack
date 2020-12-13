@@ -1,24 +1,19 @@
 import  express from 'express'
 import  dotEnv from 'dotenv'
-import  products from'./data/products.js'
+import productRoutes from './router/productRouter.js' 
+import connectDb from './config/db.js'
+import  colors from 'colors'
 
- dotEnv.config()
+dotEnv.config()
 
+connectDb()
 const app = express()
 
 app.get('/',(req,res)=>{
     res.send('Hello Arefin');
 })
-app.get('/api/products',(req,res)=>{
-    
-    res.json(products)
-})
-app.get('/api/product/:id',(req,res)=>{
-    
-    const product = products.find(p => p._id === req.params.id);
 
-    res.send(product)
-})
+app.use('/api/products',productRoutes)
 
 const Port = process.env.PORT;
-app.listen(Port||8080 ,console.log('Listening buddy'));
+app.listen(Port||8080 ,console.log('Listening buddy'.yellow.bold));
