@@ -11,6 +11,7 @@ import {Container} from 'react-bootstrap';
 import './index.css';
 import Home from './components/screens/HomeScreen/Home';
 import ProductScreen from './components/screens/ProsuctScreen/ProductScreen';
+import CartScreen from './components/screens/CartScreen/CartScreen';
 
 const App = () => {
   return (
@@ -26,6 +27,9 @@ const App = () => {
             </Route>
             <Route  exact path="/product/:id" >
               <ProductScreen />
+            </Route>
+            <Route   path="/cart/:id?" >
+              <CartScreen></CartScreen>
             </Route>
              
            </Switch>
