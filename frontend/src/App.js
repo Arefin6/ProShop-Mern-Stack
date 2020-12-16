@@ -12,6 +12,9 @@ import './index.css';
 import Home from './components/screens/HomeScreen/Home';
 import ProductScreen from './components/screens/ProsuctScreen/ProductScreen';
 import CartScreen from './components/screens/CartScreen/CartScreen';
+import LoginScreen from './components/screens/LoginScreen/LoginScreen';
+import RegisterScreen from './components/screens/RegisterScreen/RegisterScreen';
+import ProfileScreen from './components/screens/ProfileScreen/ProfileScreen';
 
 const App = () => {
   return (
@@ -27,6 +30,15 @@ const App = () => {
             </Route>
             <Route  exact path="/product/:id" >
               <ProductScreen />
+            </Route>
+            <Route   path="/login" >
+              <LoginScreen></LoginScreen>
+            </Route>
+            <Route   path="/profile" >
+              <ProfileScreen></ProfileScreen>
+            </Route>
+            <Route   path="/register" >
+              <RegisterScreen></RegisterScreen>
             </Route>
             <Route   path="/cart/:id?" >
               <CartScreen></CartScreen>

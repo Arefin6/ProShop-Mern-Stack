@@ -20,10 +20,9 @@ const authUser = asyncHandler(async(req,res)=>{
         })
     }
     else{
-        res.status(401)
-        res.send({
-            message:"Invalid User OR Password"
-        })
+       
+        res.status(401).send({message:"Invalid UserName Or Password"})
+        // throw new Error('Invalid email or password')
     }
 
 })
@@ -42,11 +41,40 @@ const getUserProfile = asyncHandler(async(req,res)=>{
      }
      else{
         res.status(404)
-        res.send({
-            message:"Invalid User OR Password"
-        }) 
+        throw new Error('Invalid user data') 
      }
 })
+
+//Update User Profile
+
+
+const updateUserProfile = asyncHandler(async(req,res)=>{
+    const user = await User.findById(req.user._id)
+    if(user){
+        user.name= req.body.name || user.name
+        user.email = req.body.email || user.email
+
+        if(req.body.password){
+            user.password = req.body.password
+        }
+
+        const updatedUser = await user.save()
+
+        res.send({
+           _id:updatedUser.id,
+           name:updatedUser.name,
+           email:updatedUser.email,
+           isAdmin:updatedUser.isAdmin,
+        })
+    }
+    else{
+       res.status(404)
+       throw new Error('Invalid user data') 
+    }
+})
+
+
+
 
 
 //Register User
@@ -59,9 +87,8 @@ const registerUser = asyncHandler(async(req,res)=>{
       
      if(userExits){
          res.status(400)
-         res.send({
-            message:"User Already Exits "
-        }) 
+        
+         throw new Error('User already exists')
      }
 
      const user = await User.create({
@@ -81,12 +108,10 @@ const registerUser = asyncHandler(async(req,res)=>{
      }
      else{
          res.status(400)
-         res.send({
-            message:"Invalid User data"
-        }) 
+         throw new Error('Invalid user data')
      }
 
 })
 
 
-export {authUser,getUserProfile,registerUser }
+export {authUser,getUserProfile,registerUser,updateUserProfile }
