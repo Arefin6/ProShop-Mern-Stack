@@ -1,6 +1,7 @@
 import  express from 'express'
 import  dotEnv from 'dotenv'
 import productRoutes from './router/productRouter.js' 
+import userRoutes from './router/userRoute.js' 
 import connectDb from './config/db.js'
 import  colors from 'colors'
 
@@ -9,11 +10,14 @@ dotEnv.config()
 connectDb()
 const app = express()
 
+app.use ( express.json())
+
 app.get('/',(req,res)=>{
     res.send('Hello Arefin');
 })
 
 app.use('/api/products',productRoutes)
+app.use('/api/user',userRoutes)
 
 const Port = process.env.PORT;
 app.listen(Port||8080 ,console.log('Listening buddy'.yellow.bold));
