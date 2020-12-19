@@ -2,6 +2,7 @@ import  express from 'express'
 import  dotEnv from 'dotenv'
 import productRoutes from './router/productRouter.js' 
 import userRoutes from './router/userRoute.js' 
+import orderRoutes from './router/orderRouter.js' 
 import connectDb from './config/db.js'
 import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import  colors from 'colors'
@@ -19,6 +20,7 @@ app.get('/',(req,res)=>{
 
 app.use('/api/products',productRoutes)
 app.use('/api/user',userRoutes)
+app.use('/api/order',orderRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
