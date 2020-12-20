@@ -14,10 +14,12 @@ const addNewOrder = asyncHandler(async(req,res)=>{
 
       if(orderItems && orderItems.length === 0){
           res.status(400).json({message:"No Order Items"})
+          return
       } 
       else{
           const order = new Order({
-            orderItems,
+         orderItems,
+         user:req.user._id,
          shippingAddress,
          paymentMethod,
          itemPrice,
@@ -26,9 +28,9 @@ const addNewOrder = asyncHandler(async(req,res)=>{
          totalPrice  
           })
 
-        const createOrder = await order.save()
+        const createdOrder = await order.save()
         
-        res.status(201).json(createOrder)
+        res.status(201).send(createdOrder)
 
       }   
     
