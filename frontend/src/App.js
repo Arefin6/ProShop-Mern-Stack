@@ -18,6 +18,7 @@ import ProfileScreen from './components/screens/ProfileScreen/ProfileScreen';
 import ShipingScreen from './components/screens/Shiping Screen/ShipingScreen';
 import PaymentScreen from './components/screens/PaymentScreen/PaymentScreen';
 import PlaceOrderScreen from './components/screens/PlaceOrderScreen/PlaceOrderScreen';
+import OrderScreen from './components/screens/OrderScreen/OrderScreen';
 
 const App = () => {
   return (
@@ -51,6 +52,9 @@ const App = () => {
             </Route>
             <Route   path="/placeOrder" >
                <PlaceOrderScreen></PlaceOrderScreen>
+            </Route>
+            <Route   path="/order/:id" >
+               <OrderScreen></OrderScreen>
             </Route>
             <Route   path="/cart/:id?" >
               <CartScreen></CartScreen>
