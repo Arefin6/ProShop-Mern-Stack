@@ -1,5 +1,5 @@
 import express from 'express'
-import { authUser, getAllUsers, getUserProfile, registerUser, updateUserProfile } from '../controllers/userController.js'
+import { authUser, deleteUser, getAllUsers, getUserProfile, registerUser, updateUserProfile } from '../controllers/userController.js'
 import { isAdmin, protect } from '../middleware/authMiddleware.js'
 
 
@@ -11,6 +11,8 @@ router.route('/profile')
 .get(protect,getUserProfile)
 .put(protect,updateUserProfile)
 router.post('/login',authUser)
+
+router.route('/:id').delete(protect,isAdmin,deleteUser)
 
 
 
