@@ -26,7 +26,7 @@ const ProfileScreen = () => {
      const {success} = userUpdateProfile
 
      const  orderMyList = useSelector(state => state. orderMyList )
-     const {loading:loadingOrders,error:errorOrders,orders} =  orderMyList
+     const {loading:loadingOrders,error:errorOrders,orders} = orderMyList
 
      const history = useHistory()
     
@@ -45,7 +45,7 @@ const ProfileScreen = () => {
                    setEmail(user.email)
                }
            }  
-     },[history,userInfo,user]) 
+     },[history,userInfo,user,dispatch]) 
 
      const submitHandler = (e)=>{
        if(password !== confirmPassword){

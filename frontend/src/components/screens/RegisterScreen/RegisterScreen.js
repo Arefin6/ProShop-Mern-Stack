@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import {Link, useHistory} from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux';
-import {login,register} from '../../../actions/userActions'
+import {register} from '../../../actions/userActions'
 import FormContainer from '../../FormContainer/FormContainer';
 import Message from '../../Message/Message';
 import Loader from '../../../Loader/Loader';

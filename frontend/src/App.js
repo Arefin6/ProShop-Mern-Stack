@@ -4,8 +4,7 @@ import Header from './components/Header/Header';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import {Container} from 'react-bootstrap';
 import './index.css';
@@ -20,6 +19,7 @@ import PaymentScreen from './components/screens/PaymentScreen/PaymentScreen';
 import PlaceOrderScreen from './components/screens/PlaceOrderScreen/PlaceOrderScreen';
 import OrderScreen from './components/screens/OrderScreen/OrderScreen';
 import UserListScreen from './components/screens/UserListScreen/UserListScreen'
+import UserEditScreen from './components/screens/UserEditScreen/UserEditScreen';
 
 const App = () => {
   return (
@@ -63,6 +63,10 @@ const App = () => {
             <Route   path="/admin/userList" >
               <UserListScreen></UserListScreen>
             </Route>
+            <Route   path="/admin/user/:id/edit" >
+              <UserEditScreen></UserEditScreen>
+            </Route>
+             
              
            </Switch>
         

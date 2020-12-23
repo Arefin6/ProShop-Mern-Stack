@@ -1,5 +1,5 @@
 import express from 'express'
-import { authUser, deleteUser, getAllUsers, getUserProfile, registerUser, updateUserProfile } from '../controllers/userController.js'
+import { authUser, deleteUser, getAllUsers, getUserById, getUserProfile, registerUser, updateUserById, updateUserProfile } from '../controllers/userController.js'
 import { isAdmin, protect } from '../middleware/authMiddleware.js'
 
 
@@ -12,7 +12,10 @@ router.route('/profile')
 .put(protect,updateUserProfile)
 router.post('/login',authUser)
 
-router.route('/:id').delete(protect,isAdmin,deleteUser)
+router.route('/:id')
+.delete(protect,isAdmin,deleteUser)
+.get(protect,isAdmin,getUserById)
+.put(protect,isAdmin,updateUserById)
 
 
 
