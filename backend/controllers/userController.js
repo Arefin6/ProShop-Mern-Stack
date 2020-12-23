@@ -113,5 +113,17 @@ const registerUser = asyncHandler(async(req,res)=>{
 
 })
 
+//get All User For ADmin
 
-export {authUser,getUserProfile,registerUser,updateUserProfile }
+
+const getAllUsers = asyncHandler(async(req,res)=>{
+
+    const users = await User.find({})
+     
+    res.send(users)
+    
+})
+
+
+
+export {authUser,getUserProfile,registerUser,updateUserProfile,getAllUsers }
