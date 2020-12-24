@@ -54,7 +54,7 @@ const createProduct = asyncHandler(async(req,res)=>{
 
     const createdProduct = await product.save() 
 
-    res.json(createProduct)
+    res.send(createdProduct)
    
 })
 

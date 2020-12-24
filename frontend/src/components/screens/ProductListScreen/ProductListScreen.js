@@ -3,8 +3,9 @@ import {useDispatch,useSelector} from 'react-redux'
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Loader from '../../../Loader/Loader'
 import Message from '../../Message/Message'
-import { listProducts, deleteProduct} from '../../../actions/productActions'
+import { listProducts, deleteProduct, createProduct} from '../../../actions/productActions'
 import { Button, Col, Row, Table } from 'react-bootstrap';
+import { PRODUCT_CREATE_RESET } from '../../../constains/productConstains';
 const ProductListScreen = () => {
      const dispatch = useDispatch()
 
@@ -15,6 +16,10 @@ const ProductListScreen = () => {
       const productList = useSelector(state => state.productList)
       const {loading,error,products} = productList
 
+      const productCreate = useSelector(state => state.productCreate)
+      const {loading:loadingCreate,error:errorCreate,success:successCreate, product:createdProduct} = productCreate
+
+
       const productDelete = useSelector(state => state.productDelete)
       const {loading:loadingDelete,error:errorDelete,success:successDelete} = productDelete
 
@@ -22,14 +27,20 @@ const ProductListScreen = () => {
       const {userInfo} = userLogin
       
       useEffect(()=>{
-          if(userInfo && userInfo.isAdmin){
-            dispatch(listProducts())
+          dispatch({type:PRODUCT_CREATE_RESET})
+           
+          if( !userInfo.isAdmin){
+            history.push('/login')
+          }
+          if(successCreate){
+              history.push(`/admin/product/${createdProduct._id}/edit`)
           }
           else{
-              history.push('/login')
+              dispatch(listProducts())
           }
           
-      },[dispatch,history,userInfo,successDelete])
+          
+      },[dispatch,history,userInfo,successDelete,successCreate,createdProduct])
 
       const deleteHandler = (id) => {
           if(window.confirm('Are You Sure')){
@@ -39,7 +50,7 @@ const ProductListScreen = () => {
           
       }
       const addProductHandler = () =>{
-
+         dispatch(createProduct())
       }
 
     return (
@@ -54,6 +65,8 @@ const ProductListScreen = () => {
                 </Button> 
              </Col>
          </Row>
+         {loadingCreate && <Loader></Loader>}
+         {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
          {loadingDelete && <Loader></Loader>}
          {errorDelete && <Message variant='danger'>{errorDelete}</Message>}
          {loading ? <Loader></Loader>: error ? <Message variant='danger'>{error}</Message> :(
