@@ -7,20 +7,21 @@ import Product from '../../Products/Product';
 import Loader from '../../../Loader/Loader';
 import Message from '../../Message/Message';
 import { useParams } from 'react-router-dom';
+import Paginate from '../../Paginate/Paginate';
 
 const Home = () => {
 
     const dispatch = useDispatch()
     
-    const {keyword} = useParams()
+    const {keyword,pageNumber} = useParams()
 
     const productList = useSelector(state => state.productList)
      
-    const {loading,error,products} = productList
+    const {loading,error,products,page,pages} = productList
 
     useEffect(()=>{
-        dispatch(listProducts(keyword))  
-    },[dispatch,keyword])
+        dispatch(listProducts(keyword,pageNumber))  
+    },[dispatch,keyword,pageNumber])
 
     return (
         <>
@@ -31,6 +32,7 @@ const Home = () => {
             ): error ?(
               <Message variant="danger" >{error}</Message>
             ):
+            <> 
             <Row>
                
             {
@@ -43,6 +45,8 @@ const Home = () => {
             } 
            
          </Row>
+          <Paginate pages={pages} page={page} keyword={keyword ? keyword : ''} ></Paginate>
+          </>
        
            }
           

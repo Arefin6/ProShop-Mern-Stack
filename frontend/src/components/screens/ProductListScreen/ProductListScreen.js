@@ -6,15 +6,16 @@ import Message from '../../Message/Message'
 import { listProducts, deleteProduct, createProduct} from '../../../actions/productActions'
 import { Button, Col, Row, Table } from 'react-bootstrap';
 import { PRODUCT_CREATE_RESET } from '../../../constains/productConstains';
+import Paginate from '../../Paginate/Paginate';
 const ProductListScreen = () => {
      const dispatch = useDispatch()
 
      const history = useHistory()
 
-     const {id} = useParams()
+     const {id,pageNumber} = useParams()
      
       const productList = useSelector(state => state.productList)
-      const {loading,error,products} = productList
+      const {loading,error,products,pages,page} = productList
 
       const productCreate = useSelector(state => state.productCreate)
       const {loading:loadingCreate,error:errorCreate,success:successCreate, product:createdProduct} = productCreate
@@ -36,11 +37,11 @@ const ProductListScreen = () => {
               history.push(`/admin/product/${createdProduct._id}/edit`)
           }
           else{
-              dispatch(listProducts())
+              dispatch(listProducts('',pageNumber))
           }
           
           
-      },[dispatch,history,userInfo,successDelete,successCreate,createdProduct])
+      },[dispatch,history,userInfo,successDelete,successCreate,createdProduct,pageNumber])
 
       const deleteHandler = (id) => {
           if(window.confirm('Are You Sure')){
@@ -118,7 +119,8 @@ const ProductListScreen = () => {
                  </tbody>
 
              </Table>
-         ) }   
+         ) }
+         <Paginate pages={pages} page={page} isAdmin={true}></Paginate>    
         </>
     );
 };
