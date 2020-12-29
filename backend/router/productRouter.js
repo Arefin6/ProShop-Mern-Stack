@@ -1,5 +1,5 @@
 import express from 'express'
-import { createProduct, createProductReview, deleteProduct, getProducts, getProductsById, updateProduct } from '../controllers/productController.js'
+import { createProduct, createProductReview, deleteProduct, getProducts, getProductsById, getTopProducts, updateProduct } from '../controllers/productController.js'
 import { isAdmin, protect } from '../middleware/authMiddleware.js'
 
 
@@ -12,7 +12,7 @@ router.route('/')
 .post(protect,isAdmin,createProduct)
 
 router.route('/:id/reviews').post(protect,createProductReview)
-
+router.get('/top',getTopProducts)
 router.route('/:id')
 .get(getProductsById)
 .delete(protect,isAdmin,deleteProduct)
