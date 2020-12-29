@@ -36,6 +36,9 @@ const App = () => {
             <Route path="/" exact>
             <Home></Home>
             </Route>
+            <Route path="/search/:keyword" >
+            <Home></Home>
+            </Route>
             <Route  exact path="/product/:id" >
               <ProductScreen />
             </Route>

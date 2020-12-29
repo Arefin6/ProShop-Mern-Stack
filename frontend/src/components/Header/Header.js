@@ -2,7 +2,9 @@ import React from 'react';
 import { Container, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import {useDispatch,useSelector} from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap'
+import { Route } from 'react-router-dom';
 import { logout } from '../../actions/userActions';
+import SearchBox from '../SearchBox/SearchBox';
 
 const Header = () => {
 
@@ -19,6 +21,8 @@ const Header = () => {
         <Navbar bg="dark" variant="dark">
             <Container>
             <Navbar.Brand href="/">ProShop</Navbar.Brand>
+              
+             <Route render={({history}) => <SearchBox history={history} />}   />  
             <Nav className="ml-auto">
             <Nav.Link href="/cart"><i className="fas fa-shopping-cart pr-2"></i>Cart</Nav.Link>
             {
