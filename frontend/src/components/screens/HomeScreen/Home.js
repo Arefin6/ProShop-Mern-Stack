@@ -9,6 +9,7 @@ import Message from '../../Message/Message';
 import { useParams } from 'react-router-dom';
 import Paginate from '../../Paginate/Paginate';
 import ProductCarosel from '../../ProductCarosel/ProductCarosel';
+import Meta from '../../Meta';
 
 const Home = () => {
 
@@ -26,6 +27,7 @@ const Home = () => {
 
     return (
         <>
+         <Meta title={'Welcome to ProShop | Home'}></Meta>
          {!keyword && <ProductCarosel></ProductCarosel>}
            <h1>Latest Products</h1>
            {

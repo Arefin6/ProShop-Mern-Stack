@@ -168,7 +168,9 @@ export const listProductDetails = (id)=>async(dispatch)=>{
         
         dispatch({
             type:PRODUCT_CREATE_REVIEW_FAIL,
-            payload:error.message
+            error: error.response && error.response.data.message
+           ? error.response.data.message
+           : error.message
         })   
     }   
    }   

@@ -5,6 +5,7 @@ import {listProductDetails,reviewProductCreate} from '../../../actions/productAc
 import { Button, Card, Col, Form, Image, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import Rating from '../../Rating/Rating';
+import Meta from '../../Meta'
 import Loader from '../../../Loader/Loader';
 import Message from '../../Message/Message';
 import { PRODUCT_CREATE_REVIEW_RESET } from '../../../constains/productConstains';
@@ -69,7 +70,8 @@ const ProductScreen = () => {
               ): error ?(
                 <Message variant="danger" >{error}</Message>
               ):
-              <> 
+              <>
+              <Meta title={`${product.name}`}></Meta> 
               <Row>
               <Col md={6}>
                  <Image src={product.image} alt ={product.name} fluid/>
