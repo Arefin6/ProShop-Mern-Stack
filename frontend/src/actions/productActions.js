@@ -32,7 +32,10 @@ export const listProducts = (keyword = '',pageNumber='')=>async(dispatch)=>{
      
      dispatch({
          type:PRODUCT_LIST_FAIL,
-         payload:error.message
+         payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
      })   
  }   
 } 
@@ -54,7 +57,10 @@ export const listProductDetails = (id)=>async(dispatch)=>{
         
         dispatch({
             type:PRODUCT_DETAILS_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }   
    } 
@@ -81,7 +87,10 @@ export const listProductDetails = (id)=>async(dispatch)=>{
         
         dispatch({
             type:PRODUCT_DELETE_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }   
    } 
@@ -109,7 +118,10 @@ export const listProductDetails = (id)=>async(dispatch)=>{
         
         dispatch({
             type:PRODUCT_CREATE_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }   
    }  
@@ -139,7 +151,10 @@ export const listProductDetails = (id)=>async(dispatch)=>{
         
         dispatch({
             type:PRODUCT_UPDATE_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }   
    }   
@@ -168,9 +183,10 @@ export const listProductDetails = (id)=>async(dispatch)=>{
         
         dispatch({
             type:PRODUCT_CREATE_REVIEW_FAIL,
-            error: error.response && error.response.data.message
-           ? error.response.data.message
-           : error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }   
    }   
@@ -192,7 +208,10 @@ export const listProductDetails = (id)=>async(dispatch)=>{
         
         dispatch({
             type:PRODUCT_TOP_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }   
    }   

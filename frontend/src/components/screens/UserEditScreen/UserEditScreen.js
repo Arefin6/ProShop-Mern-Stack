@@ -44,7 +44,7 @@ const UserEditScreen = () => {
          }
         
           
-     },[dispatch,user,id,successUpdate]) 
+     },[dispatch,user,id,successUpdate,history]) 
 
      const submitHandler = (e)=>{
       

@@ -12,7 +12,7 @@ const ProductListScreen = () => {
 
      const history = useHistory()
 
-     const {id,pageNumber} = useParams()
+     const {pageNumber} = useParams()
      
       const productList = useSelector(state => state.productList)
       const {loading,error,products,pages,page} = productList

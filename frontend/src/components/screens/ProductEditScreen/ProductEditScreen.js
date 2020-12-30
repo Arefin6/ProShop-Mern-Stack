@@ -56,7 +56,7 @@ const ProductEditScreen = () => {
             }
 
            }        
-     },[dispatch,product,id,successUpdate]) 
+     },[dispatch,product,id,successUpdate,history]) 
 
      const handleFileUpload = async(e) =>{
      const file = e.target.files[0]

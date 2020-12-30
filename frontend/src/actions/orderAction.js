@@ -38,7 +38,10 @@ export const orderCreate = (order) =>async(dispatch,getState)=>{
     } catch (error) {
         dispatch({
             type:ORDER_CREATE_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }
 }
@@ -73,7 +76,10 @@ export const getOrderDetails = (id) =>async(dispatch,getState)=>{
     } catch (error) {
         dispatch({
             type:ORDER_DETAILS_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }
 }
@@ -109,7 +115,10 @@ export const payOrder = (orderId,paymentResult) =>async(dispatch,getState)=>{
     } catch (error) {
         dispatch({
             type:ORDER_PAY_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }
 }
@@ -144,7 +153,10 @@ export const listMyOrders = () =>async(dispatch,getState)=>{
     } catch (error) {
         dispatch({
             type:ORDER_MY_LIST_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }
 }
@@ -178,7 +190,10 @@ export const listOrders = () =>async(dispatch,getState)=>{
     } catch (error) {
         dispatch({
             type:ORDER_LIST_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }
 }
@@ -214,7 +229,10 @@ export const deliverOrder = (order) =>async(dispatch,getState)=>{
     } catch (error) {
         dispatch({
             type:ORDER_DELIVER_FAIL,
-            payload:error.message
+            payload:
+            error.response && error.response.data.message
+              ? error.response.data.message
+              : error.message,
         })   
     }
 }

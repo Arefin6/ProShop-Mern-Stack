@@ -113,8 +113,11 @@ const updateProduct = asyncHandler(async (req, res) => {
        const alreadyReviewed = product.reviews.find(r => r.user.toString() === req.user._id.toString())
        
        if(alreadyReviewed){
-          const message = 'You Already Reviewed"' 
-          res.status(400).json(message);
+          
+          res.status(400)
+          res.json({
+              message:'You Already Reviewed'
+          })
 
        }
        else{

@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React,{ useState } from 'react';
 import {Form,Button} from 'react-bootstrap';
 import {useHistory} from 'react-router-dom';
 
-const SearchBox = ({}) => {
+const SearchBox = () => {
     const [keyword,setKeyword] = useState('')
      const history = useHistory()
 
