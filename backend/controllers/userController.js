@@ -3,8 +3,6 @@ import asyncHandler from 'express-async-handler'
 import generateAuthToken from '../utiles/generateToken.js'
 
 
-
-
 const authUser = asyncHandler(async(req,res)=>{
     const {email,password} = req.body
 
@@ -72,6 +70,7 @@ const updateUserProfile = asyncHandler(async(req,res)=>{
        throw new Error('Invalid user data') 
     }
 })
+
 
 
 
