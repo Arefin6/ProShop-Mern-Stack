@@ -15,14 +15,23 @@ Features:
 
  ○ Reviwe A Product
 
-Technology
+Technology:
+
 ○ React
+
 ○ Redux
+
 ○ React Router
+
 ○ ReactBootstrap
+
 ○ Node.js
+
 ○ MongoDB
+
 ○ JWt Authentication
+
 ○ Paypal APi
+
 ○ Heroku
 
