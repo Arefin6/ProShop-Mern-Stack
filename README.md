@@ -5,21 +5,24 @@ A full-stack E-Comerce app where you can order your favorite Product. You have o
 
 Features:
 
-Order Product from the menu
+ ○ Order Product from the menu
 
-Sign Up to place order
-Pay online using Paypal
-Search For Product
-Reviwe A Product
+ ○ Sign Up to place order
+
+ ○ Pay online using Paypal
+
+ ○ Search For Product
+
+ ○ Reviwe A Product
 
 Technology
-React
-Redux
-React Router
-ReactBootstrap
-Node.js
-MongoDB
-JWt Authentication
-Paypal APi
-Heroku
+○ React
+○ Redux
+○ React Router
+○ ReactBootstrap
+○ Node.js
+○ MongoDB
+○ JWt Authentication
+○ Paypal APi
+○ Heroku
 
